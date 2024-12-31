@@ -1,7 +1,6 @@
-package _02_07.before;
+package myJavaExercizes.EX1;
 
-public class AdultTicket extends Ticket {
-
+public class AdultTicket extends Ticket{
     @Override
     public int getPrice() {
         return 10;
@@ -11,5 +10,4 @@ public class AdultTicket extends Ticket {
     public String toString() {
         return "Adult ticket";
     }
-
 }

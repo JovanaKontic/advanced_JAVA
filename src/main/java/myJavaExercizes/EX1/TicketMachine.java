@@ -1,4 +1,4 @@
-package _02_06;
+package myJavaExercizes.EX1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,11 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class TicketMachine {
-
     public static void main(String[] args) {
 
         List<List<String>> destinationLists = asList(
                 asList("New York", "Boston"),
                 asList("Los Angeles", "San Francisco"));
-
 
         List<List<Ticket>> ticketLists = asList(
                 asList(new AdultTicket(), new AdultTicket()),
@@ -22,34 +20,32 @@ public class TicketMachine {
         List<String> destinations = flattenList(destinationLists);
         System.out.println(destinations);
 
-//        List<Ticket> tickets = flattenList(ticketLists);
-//        System.out.println(tickets);
+        List<Ticket> tickets = flattenList(ticketLists);
+        System.out.println(tickets);
 
-//        System.out.println("Total price: " + getTotalPrice(tickets));
+        System.out.println("Total price: " + getTotalPrice(tickets));
 
-//        List<AdultTicket> adultTickets = asList(new AdultTicket(), new AdultTicket());
-//        System.out.println("Total price: " + getTotalPrice(adultTickets));
-
+        List<AdultTicket> adultTickets = asList(new AdultTicket(), new AdultTicket());
+        System.out.println("Total price: " + getTotalPrice(adultTickets));
     }
 
 
     //This should work with lists containing any type of object
-    static List<String> flattenList(List<List<String>> nestedList) {
+    static <T> List<T> flattenList(List<List<T>> nestedList) {
 
-        List<String> flattenedList = new ArrayList<>();
+        List<T> flattenedList = new ArrayList<>();
+        /*** <Class name>::<method name>
+         * to call a method by referring to it with the help of its class directly ***/
         nestedList.forEach(flattenedList::addAll);
         return flattenedList;
-
     }
 
     // This should work with lists containing Ticket objects or any subclass of Ticket
-    static int getTotalPrice(List<Ticket> tickets) {
+    static int getTotalPrice(List<? extends Ticket> tickets) {
         int totalPrice = 0;
         for (Ticket ticket : tickets) {
             totalPrice += ticket.getPrice();
         }
         return totalPrice;
     }
-
-
 }

@@ -1,7 +1,6 @@
-package _02_07.before;
+package myJavaExercizes.EX1;
 
 public class ChildTicket extends Ticket {
-
 
     @Override
     public int getPrice() {
@@ -12,5 +11,4 @@ public class ChildTicket extends Ticket {
     public String toString() {
         return "Child ticket";
     }
-
 }
